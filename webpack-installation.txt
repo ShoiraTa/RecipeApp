@@ -1,0 +1,91 @@
+mkdir newProject
+cd newProject
+npm init -y
+npm install webpack webpack-cli --save-dev
+
+/////////////////////////////////////////////////
+inside newProject: 
+webpack-demo
+  |- package.json
+ |- index.html
+ |- /src
+   |- index.js // create this file
+
+///////////////////////////////////////////////////
+inside src/index.js:
+function component() {
+  const element = document.createElement('div');
+
+  // Lodash, currently included via a script, is required for this line to work
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+
+  return element;
+}
+
+document.body.appendChild(component()); 
+
+////////////////////////////////////////////////////////////////
+inside newProject:
+ webpack-demo
+  |- package.json
+ |- /dist
+   |- index.html
+ |- /src
+   |- index.js
+
+//////////////////////////////////////////////////////////
+To bundle the lodash dependency with index.js, we'll need to install the library locally:
+
+npm install --save lodash
+
+////////////////////////////////////////////////////////
+
+inside src/index.js:
+import _ from 'lodash';
+
+ function component() {
+   const element = document.createElement('div');
+
+  // Lodash, currently included via a script, is required for this line to work
+  // Lodash, now imported by this script
+   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+
+   return element;
+ }
+
+ document.body.appendChild(component());
+
+ //////////////////////////////////////////////////////
+ Setting up HtmlWebpackPlugin
+First install the plugin and adjust the webpack.config.js file:
+
+npm install --save-dev html-webpack-plugin
+run npx webpack
+
+////////////////////////////////////////////////////
+inside package.json:
+   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack" /////add this
+   },
+ then run: 
+npm run build
+
+///////////////////////////////////////////////////
+
+add css
+npm install --save-dev style-loader css-loader
+webpack-demo
+
+  |- package.json
+  |- webpack.config.js
+  |- /dist
+    |- bundle.js
+    |- index.html
+  |- /src
+   |- style.css  //add styles
+    |- index.js
+  |- /node_modules
+
+  ////////////////////////
