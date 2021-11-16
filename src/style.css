@@ -51,12 +51,6 @@ a:hover {
   transition: all ease 0.3s;
 }
 
-.banner {
-  height: 350px;
-  background: url('../brooke-lark-HlNcigvUi4Q-unsplash.jpg') no-repeat center;
-  background-size: cover;
-}
-
 main {
   height: 500px;
 }
@@ -64,25 +58,8 @@ main {
 /* footer */
 footer {
   background: #eaeaea;
-  height: 170px;
+  height: 15px;
   padding: 1rem 2rem;
-}
-
-.footer-socialLinks,
-.footer-cookWithUs {
-  width: 25%;
-}
-
-.footer-socialLinks .fab {
-  color: #6d8347;
-  font-size: 2rem;
-  padding-right: 1rem;
-}
-
-.footer-img {
-  height: 120px;
-  background: url('../spaghetti-g01609a57e_640.jpg') no-repeat center;
-  background-size: cover;
 }
 
 .footer-reserved {
@@ -93,6 +70,10 @@ footer {
 
 .footer-reserved li {
   margin-right: 0.5rem;
+}
+
+.footer-reserved li a{
+  font-size: 0.9rem;
 }
 
 /* Helpers */
