@@ -183,10 +183,8 @@ footer {
   background-color: #eaeaea;
 }
 
-
 @media only screen and (max-width: 680px) {
-  .meal-list li{
+  .meal-list li {
     width: 100%;
   }
 }
-
