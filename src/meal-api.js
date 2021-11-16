@@ -72,10 +72,12 @@ const popup = async () => {
           const entries = Object.entries(element);
           const ingredientsArray = entries
             .filter(([key, value]) => key.startsWith('strIngredient') && value && value.trim())
-            .map(([key, value]) => value);// eslint-disable-line no-eval
+            /* eslint-disable-next-line */
+            .map(([key, value]) => value);
           const measuresArray = entries
             .filter(([key, value]) => key.startsWith('strMeasure') && value && value.trim())
-            .map(([key, value]) => value);// eslint-disable-line no-eval
+            /* eslint-disable-next-line */
+            .map(([key, value]) => value);
           for (let i = 1; i < ingredientsArray.length; i += 1) {
             ingredientsUl.innerHTML += `<li> ${ingredientsArray[i]} - ${measuresArray[i]} </li> `;
           }
