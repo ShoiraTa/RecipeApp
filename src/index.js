@@ -1,2 +1,2 @@
 import './style.css';
-import './api.js';
+import './meal-api.js';
