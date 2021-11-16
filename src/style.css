@@ -182,3 +182,11 @@ footer {
 .bg-darkGray {
   background-color: #eaeaea;
 }
+
+
+@media only screen and (max-width: 680px) {
+  .meal-list li{
+    width: 100%;
+  }
+}
+
