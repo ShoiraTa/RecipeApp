@@ -1,3 +1,81 @@
-.hello {
-  color: red;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+body{
+  font-family: "Poppins", sans-serif;
+  background-color: #F5F5F5;
+  margin: 0;
+}
+
+.header-top{
+  color: #fff;
+  padding: 0.2rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.logo{
+  height: 100px;
+  background: url('../1550308952.svg') no-repeat center;
+}
+
+.header-middle h1{
+  margin: 0;
+  font-weight: 200;
+  font-family: 'Average', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+}
+
+.header-middle p {
+  font-size: 3rem;
+  margin: -2rem;
+  font-weight: 200;
+  color: #6D8347;
+  font-family: 'Allison', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+li a{
+  padding-right: 2rem;
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
+}
+
+.banner{
+  height: 350px;
+  background: url('../brooke-lark-HlNcigvUi4Q-unsplash.jpg') no-repeat center;
+  background-size: cover;
+}
+
+/* Helpers */
+.pt-2{
+  padding-top: 2rem;
+}
+
+.d-flex{
+  display: flex;
+}
+
+.align-center{
+  align-items: center;
+}
+
+.justify-center{
+  justify-content: center;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.bg-green{
+  background-color: #6D8347;
+}
+
+.bg-gray{
+  background-color: #F5F5F5
 }
