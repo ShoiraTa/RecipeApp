@@ -1,3 +1,126 @@
-.hello {
-  color: red;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+}
+
+.header-top {
+  color: #fff;
+  padding: 0.2rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.logo {
+  height: 100px;
+  background: url('../1550308952.svg') no-repeat center;
+}
+
+.header-middle h1 {
+  margin: 0;
+  font-weight: 200;
+  font-family: 'Average', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+}
+
+.header-middle p {
+  font-size: 3rem;
+  margin-top: -2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 200;
+  color: #6d8347;
+  font-family: 'Allison', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+li a {
+  padding-right: 2rem;
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #6d8347;
+  transition: all ease 0.3s;
+}
+
+main {
+  height: 500px;
+}
+
+/* footer */
+footer {
+  background: #eaeaea;
+  height: 15px;
+  padding: 1rem 2rem;
+}
+
+.footer-reserved {
+  margin: 0;
+  padding: 0;
+  align-items: end;
+}
+
+.footer-reserved li {
+  margin-right: 0.5rem;
+}
+
+.footer-reserved li a{
+  font-size: 0.9rem;
+}
+
+/* Helpers */
+.pt-2 {
+  padding-top: 2rem;
+}
+
+.m-05 {
+  margin: 0.5rem;
+}
+
+.letter-spacing-01 {
+  letter-spacing: 0.1rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bg-green {
+  background-color: #6d8347;
+}
+
+.bg-gray {
+  background-color: #f5f5f5;
+}
+
+.bg-darkGray {
+  background-color: #eaeaea;
 }
