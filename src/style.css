@@ -28,7 +28,8 @@ body{
 
 .header-middle p {
   font-size: 3rem;
-  margin: -2rem;
+  margin-top: -2rem;
+  margin-bottom: 1.5rem;
   font-weight: 200;
   color: #6D8347;
   font-family: 'Allison', sans-serif;
@@ -51,9 +52,50 @@ li a{
   background-size: cover;
 }
 
+main{
+  height: 500px;
+}
+
+/* footer */
+footer{
+  background: #EAEAEA;
+  height: 170px;
+  padding: 1rem 2rem
+}
+
+.footer-socialLinks, .footer-cookWithUs {
+  width: 25%;
+}
+
+.footer-socialLinks .fab{
+  color: #6D8347;
+  font-size: 2rem;
+  padding-right: 1rem;
+}
+
+.footer-img{
+  height: 120px;
+  background: url('../spaghetti-g01609a57e_640.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.footer-reserved{
+  margin: 0;
+  padding: 0;
+  align-items: end;
+}
+
+.footer-reserved li{
+  margin-right: 0.5rem;
+}
+
 /* Helpers */
 .pt-2{
   padding-top: 2rem;
+}
+
+.m-05{
+  margin: 0.5rem;
 }
 
 .d-flex{
@@ -68,6 +110,10 @@ li a{
   justify-content: center;
 }
 
+.justify-between{
+  justify-content: space-between;
+}
+
 .text-center{
   text-align: center;
 }
@@ -78,4 +124,8 @@ li a{
 
 .bg-gray{
   background-color: #F5F5F5
+}
+
+.bg-darkGray{
+  background-color: #EAEAEA;
 }
