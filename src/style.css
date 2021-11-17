@@ -13,6 +13,10 @@ body {
   font-size: 0.8rem;
 }
 
+.foodCount {
+  margin: 0.5rem;
+}
+
 .logo {
   height: 100px;
   background: url('../1550308952.svg') no-repeat center;
@@ -39,8 +43,13 @@ ul {
   list-style: none;
 }
 
+nav ul {
+  width: 400px;
+  margin: auto;
+}
+
 nav ul li {
-  margin: 0 0.8rem;
+  margin: 0 0.3rem;
 }
 
 li a {
@@ -98,6 +107,12 @@ img {
   border: #6d8347 1px solid;
 }
 
+#comment {
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid #6d8347;
+  padding: 0.5rem 1rem;
+}
+
 .comments:hover {
   background-color: #eaeaea;
   color: #6d8347;
@@ -116,7 +131,8 @@ img {
   color: rgb(128, 0, 0);
 }
 
-i {
+i,
+button {
   cursor: pointer;
 }
 
@@ -195,7 +211,57 @@ footer {
   background: transparent;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+}
+
+.submit-comment {
+  border: 1px solid #6d8347;
+  background-color: #6d8347;
+  color: #fff;
+  padding: 0.5rem 2rem;
+}
+
+#input-name,
+#comment {
+  border: 1px solid #6d8347;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px #6d8347;
+}
+
+#comments-ul {
+  padding: 0;
+}
+
+#comments-ul li {
+  width: 40%;
+  text-align: start;
+  align-self: center;
+}
+
+#comments-ul li p {
+  margin: 0.2rem;
+}
+
+#alert {
+  text-align: start;
+  margin-bottom: 0.5rem;
+}
+
 /* Helpers */
+.bold {
+  font-weight: 500;
+}
+
 .active {
   border-bottom: 1px solid #6d8347;
 }
@@ -222,6 +288,10 @@ footer {
 
 .d-flex {
   display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .align-center {

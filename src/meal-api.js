@@ -1,3 +1,67 @@
+const getComments = async () => {
+  const submitBtn = document.getElementById('submit-comment');
+  const ul = document.getElementById('comments-ul');
+  const id = submitBtn.getAttribute('data');
+  const commentsCount = document.getElementById('comments-count');
+
+  const get = () => fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/USJEEv7W2YAs453iqIPM/comments?item_id=${id}`)
+    .then((res) => res.json());
+
+  const mealComments = await get();
+
+  commentsCount.innerHTML = `${mealComments.length > 0 ? `${mealComments.length}` : '0'}`;
+
+  ul.innerHTML = '';
+  if (mealComments.length > 0) {
+    mealComments.forEach((elem) => {
+      const liComments = document.createElement('li');
+      liComments.innerHTML = `
+      <p><span class="bold">${elem.creation_date} ${elem.username}</span>: ${elem.comment}</p>
+      `;
+      ul.appendChild(liComments);
+    });
+  }
+};
+
+const postComment = () => {
+  const userNameInput = document.getElementById('input-name');
+  const alert = document.getElementById('alert');
+  const userComment = document.getElementById('comment');
+  const submitBtn = document.getElementById('submit-comment');
+
+  const post = (id, name, comment) => fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/USJEEv7W2YAs453iqIPM/comments',
+    {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify(
+        {
+          item_id: id,
+          username: name,
+          comment,
+        },
+      ),
+    })
+    .then((res) => res.text());
+
+  getComments();
+  submitBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const id = submitBtn.getAttribute('data');
+    const name = userNameInput.value;
+    const comment = userComment.value;
+    alert.innerHTML = '';
+    if (name !== '' && comment !== '') {
+      userNameInput.value = '';
+      userComment.value = '';
+      await post(id, name, comment)
+        .then(() => getComments());
+    } else alert.innerHTML = 'Please insert your name and comment';
+  });
+};
+
 // Popup window //
 const popup = async () => {
   const header = document.querySelector('header');
@@ -14,28 +78,50 @@ const popup = async () => {
     meals.forEach((element) => {
       if (element.idMeal === id) {
         modal.innerHTML = `
-          <div class="modal">
-          <div class="meal-header justify-end d-flex">
-              <button class="close"><i class="fas fa-times"></i></button>
-          </div>
-          <div class="modal-header-img d-flex ">
-              <img class="modal-img" src="${element.strMealThumb}" alt="${element.strMeal}">
-              <h2 class="titme">${element.strMeal}</h2>
-          </div>
-          <div class="modal-description d-flex ">
-          <div class = "left">
-          <p> <span class="description-header">Category:</span> ${element.strCategory} <p>
-          <p> <span class="description-header">Ingredients:</span>
-          <ul id = "ingredientsUl">
-          </ul>
-          </span><p>
-          </div>
-          <div class = "right">
-          <p> <span class="description-header">Country:</span> ${element.strArea} <p>
-          <p> <span class="description-header">Instructions:</span> <p> <span class = "recipe-instrruction"> ${element.strInstructions}  > read more </button> </span>
-          </div>
-      </div>
-        `;
+        <div class="modal">
+        <div class="meal-header justify-end d-flex">
+            <button class="close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-header-img d-flex ">
+            <img class="modal-img" src="${element.strMealThumb}" alt="${element.strMeal}">
+            <h2 class="titme">${element.strMeal}</h2>
+        </div>
+        <div class="modal-description d-flex ">
+        <div class = "left">
+        <p> <span class="description-header">Category:</span> ${element.strCategory} <p>
+        <p> <span class="description-header">Ingredients:</span>
+        <ul id = "ingredientsUl">
+        </ul>
+        </span><p>
+        </div>
+        <div class = "right">
+        <p> <span class="description-header">Country:</span> ${element.strArea} <p>
+        <p> <span class="description-header">Instructions:</span> <p> <span class = "recipe-instrruction"> ${element.strInstructions}  > read more </button> </span>
+        </div>
+    </div>
+    <div class="comments-container">
+    <div class="all-comments text-center">
+        <h3>Comments <span id= "comments-count">0</span></h3>
+        <ul id="comments-ul" class = "d-flex justify-center flex-col">
+
+        </ul>
+    </div>
+    <div class = "text-center">
+      <h3> Add a comment </h3> 
+    </div>
+    
+    <div class="add-comments text-center d-flex justify-center">
+      <form action="POST">
+          <input name= "name" type="text" id="input-name" placeholder="Your name" required>
+          <textarea name="comment" id="comment" cols="30" rows="10" required></textarea>
+          <span id = "alert" class="text-start"> </span>
+          <button id="submit-comment" class="submit-comment" data="${element.idMeal}"> Submit</button>
+          
+      </form>
+    </div>
+    </div>
+      `;
+
         const ingredientsUl = document.querySelector('#ingredientsUl');
         const ingredients = () => {
           const entries = Object.entries(element);
@@ -60,9 +146,9 @@ const popup = async () => {
           modal.classList.add('hidden');
         });
       }
+      postComment();
     });
   };
-    // popupModalDataSet(52895);
 
   for (let i = 0; i < btn.length; i += 1) {
     btn[i].addEventListener('click', () => {
@@ -86,19 +172,21 @@ const getmeals = async () => {
       meals.forEach((element) => {
         const newmeal = document.createElement('li');
         newmeal.innerHTML = ` 
-          <div class="meal">
-          <div class="meal-header">
-            <img src="${element.strMealThumb}" alt="${element.strMeal}">
-          </div>
-          <div class="meal-body d-flex justify-between">
-            <h4>${element.strMeal}</h4>
-            <button class="fav-btn" ><i class="fas fa-heart"></i></button>
-          </div>
-          <div>
-            <div class = "likes"><span class= "likes-qty"> </span> likes </div>
-            <button class= "comments" data="${element.idMeal}">Comments</button>
-          </div>
-        </div>`;
+
+        <div class="meal">
+        <div class="meal-header">
+          <img src="${element.strMealThumb}" loading="lazy" width="500" height="280" alt="${element.strMeal}">
+        </div>
+        <div class="meal-body d-flex justify-between">
+          <h4>${element.strMeal}</h4>
+          <button class="fav-btn" ><i class="fas fa-heart"></i></button>
+        </div>
+        <div>
+          <div class = "likes"><span class= "likes-qty"> </span> likes </div>
+          <button class= "comments" data="${element.idMeal}">Comments</button>
+        </div>
+      </div>`;
+
         meallist.appendChild(newmeal);
       });
     };
@@ -109,6 +197,22 @@ const getmeals = async () => {
       .then((data) => data.meals);
     printMeals(meals);
     popup();
+  };
+
+  const foodCount = document.getElementsByClassName('foodCount');
+
+  const printCount = async (category) => {
+    const mealapiurl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
+    const meals = await fetch(mealapiurl)
+      .then((res) => res.json())
+      .then((data) => data.meals);
+
+    for (let i = 0; i < foodCount.length; i += 1) {
+      foodCount[i].innerHTML = '';
+      if (foodCount[i].classList.contains(category)) {
+        foodCount[i].innerHTML = `(${meals.length})`;
+      }
+    }
   };
 
   const links = document.querySelectorAll('nav li');
@@ -122,11 +226,14 @@ const getmeals = async () => {
     links[i].addEventListener('click', () => {
       const category = links[i].textContent.toLowerCase();
       getCategoryUrl(category);
+      printCount(category);
       resetLinks();
+
       links[i].classList.add('active');
     });
   }
   getCategoryUrl('seafood');
+  printCount('seafood');
 };
 
 getmeals();
