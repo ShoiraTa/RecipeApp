@@ -1,22 +1,26 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+# JavaScript Capstone Project
 
-# Awesome books list using Java Script!
-
-In this project, we built a simple website that allows users to add and remove books from a list using JavaScript objects and arrays. We dynamically modify the DOM and add basic events.
+In this project, we built a simple meals website were you can like your favorite meals and add comments.
 
 ## Built With
-
 - Java Script
 - HTML
 - CSS
 
+### Technologies used
+- Github
+- GitFlow
+- Visual Studio Code
+- webpack
+- npm
+- jest
 ## Deployment Link
 
-https://timowest12.github.io/Awesome-books/
+https://github.com/ShoiraTa/RecipeApp.git
+
+## Live Version 
 
 ## Website Demo
-
-![Website demo](demo.jpg)
 
 ## Authors
 
@@ -27,17 +31,17 @@ https://timowest12.github.io/Awesome-books/
 
 ![Shoira's GitHub stats](https://github-readme-stats.vercel.app/api?username=shoirata&count_private=true&theme=dark&show_icons=true)
 
-👤 **Timo Wester**
+👤 **Daniel Shdeed**
 
-- GitHub: [@githubhandle](https://github.com/Timowest12)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/timo-wester-6a0282a7/)
-
-![Timo's GitHub stats](https://github-readme-stats.vercel.app/api?username=Timowest12&count_private=true&theme=dark&show_icons=true)
-
+- GitHub: [https://github.com/Danieldotcomcoder)]
+- Twitter: [https://twitter.com/DannyDotcoder)]
+- LinkedIn: [https://www.linkedin.com/in/daniel-shdeed-832b03115/]
 ## Acknowledgments
 
 - Microverse
-
 ## 📝 License
 
 This project is [MIT](./MIT) licensed.
+
+## Show your support
+Give a ⭐️ if you like this project!
