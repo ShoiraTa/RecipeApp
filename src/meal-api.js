@@ -7,7 +7,6 @@ const getmeals = async () => {
 
   meals.forEach((element) => {
     const newmeal = document.createElement('li');
-
     newmeal.innerHTML = ` 
     <div class="meal">
     <div class="meal-header">
@@ -27,4 +26,5 @@ const getmeals = async () => {
   });
   return meals;
 };
+
 getmeals();
