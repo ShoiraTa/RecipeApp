@@ -116,7 +116,7 @@ img {
   color: rgb(128, 0, 0);
 }
 
-i {
+i, button {
   cursor: pointer;
 }
 
@@ -195,7 +195,43 @@ footer {
   background: transparent;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+}
+.submit-comment{
+  border: 1px solid #6d8347;
+  background-color: #6d8347;
+  color: #fff;
+  padding: 0.5rem 2rem;
+
+}
+#input-name, #comment, t {
+  border: 1px solid #6d8347;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#comments-ul{
+  padding: 0;
+}
+
+#comments-ul li {
+  width: 40%;
+  text-align: start;
+  align-self: center;
+}
+
+#comments-ul li p{
+  margin: 0.2rem;
+}
+
 /* Helpers */
+.bold{
+  font-weight: 500;
+}
 .active {
   border-bottom: 1px solid #6d8347;
 }
@@ -222,6 +258,10 @@ footer {
 
 .d-flex {
   display: flex;
+}
+
+.flex-col{
+  flex-direction: column;
 }
 
 .align-center {

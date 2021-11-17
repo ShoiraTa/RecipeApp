@@ -1,3 +1,57 @@
+const getComments = async () => {
+  const submitBtn = document.getElementById('submit-comment');
+  const ul = document.getElementById('comments-ul');
+  const id = submitBtn.getAttribute('data');
+  const commentsCount = document.getElementById('comments-count');
+
+  const get = () => fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/USJEEv7W2YAs453iqIPM/comments?item_id=${id}`)
+    .then((res) => res.json());
+
+  const mealComments = await get();
+  commentsCount.innerHTML = `${mealComments.length > 0 ? `${mealComments.length}` : '0'}`;
+
+  ul.innerHTML = '';
+  mealComments.forEach((elem) => {
+    console.log('worked');
+    const liComments = document.createElement('li');
+    liComments.innerHTML = `
+    <p><span class="bold">${elem.creation_date} ${elem.username}</span>: ${elem.comment}</p>
+    `;
+    ul.appendChild(liComments);
+  });
+};
+
+const postComment = () => {
+  const userNameInput = document.getElementById('input-name');
+  const userComment = document.getElementById('comment');
+  const submitBtn = document.getElementById('submit-comment');
+
+  const post = (id, name, comment) => fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/USJEEv7W2YAs453iqIPM/comments',
+    {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify(
+        {
+          item_id: id,
+          username: name,
+          comment,
+        },
+      ),
+    })
+    .then((res) => res.text());
+  getComments();
+  submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const id = submitBtn.getAttribute('data');
+    const name = userNameInput.value;
+    const comment = userComment.value;
+    post(id, name, comment);
+    getComments();
+  });
+};
+
 // Popup window //
 const popup = async () => {
   const header = document.querySelector('header');
@@ -35,6 +89,25 @@ const popup = async () => {
         <p> <span class="description-header">Instructions:</span> <p> <span class = "recipe-instrruction"> ${element.strInstructions}  > read more </button> </span>
         </div>
     </div>
+    <div class="comments-container">
+    <div class="all-comments text-center">
+        <h3>Comments <span id= "comments-count">0</span></h3>
+        <ul id="comments-ul" class = "d-flex justify-center flex-col">
+
+        </ul>
+    </div>
+    <div class = "text-center">
+      <h3> Add a comment </h3> 
+    </div>
+    
+    <div class="add-comments text-center d-flex justify-center">
+      <form action="POST">
+          <input name= "name" type="text" id="input-name" placeholder="Your name" required>
+          <textarea name="comment" id="comment" cols="30" rows="10" required></textarea>
+          <button id="submit-comment" class="submit-comment" data="${element.idMeal}"> Submit</button>
+      </form>
+    </div>
+    </div>
       `;
         const ingredientsUl = document.querySelector('#ingredientsUl');
         const ingredients = () => {
@@ -60,9 +133,9 @@ const popup = async () => {
           modal.classList.add('hidden');
         });
       }
+      postComment();
     });
   };
-  // popupModalDataSet(52895);
 
   for (let i = 0; i < btn.length; i += 1) {
     btn[i].addEventListener('click', () => {
@@ -128,5 +201,4 @@ const getmeals = async () => {
   }
   getCategoryUrl('seafood');
 };
-
 getmeals();
