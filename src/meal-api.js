@@ -8,21 +8,24 @@ const getComments = async () => {
     .then((res) => res.json());
 
   const mealComments = await get();
+
   commentsCount.innerHTML = `${mealComments.length > 0 ? `${mealComments.length}` : '0'}`;
 
   ul.innerHTML = '';
-  mealComments.forEach((elem) => {
-    console.log('worked');
-    const liComments = document.createElement('li');
-    liComments.innerHTML = `
-    <p><span class="bold">${elem.creation_date} ${elem.username}</span>: ${elem.comment}</p>
-    `;
-    ul.appendChild(liComments);
-  });
+  if (mealComments.length > 0) {
+    mealComments.forEach((elem) => {
+      const liComments = document.createElement('li');
+      liComments.innerHTML = `
+      <p><span class="bold">${elem.creation_date} ${elem.username}</span>: ${elem.comment}</p>
+      `;
+      ul.appendChild(liComments);
+    });
+  }
 };
 
 const postComment = () => {
   const userNameInput = document.getElementById('input-name');
+  const alert = document.getElementById('alert');
   const userComment = document.getElementById('comment');
   const submitBtn = document.getElementById('submit-comment');
 
@@ -41,14 +44,21 @@ const postComment = () => {
       ),
     })
     .then((res) => res.text());
+
   getComments();
-  submitBtn.addEventListener('click', (e) => {
+  submitBtn.addEventListener('click', async (e) => {
     e.preventDefault();
+
     const id = submitBtn.getAttribute('data');
     const name = userNameInput.value;
     const comment = userComment.value;
-    post(id, name, comment);
-    getComments();
+    alert.innerHTML = '';
+    if (name !== '' && comment !== '') {
+      userNameInput.value = '';
+      userComment.value = '';
+      await post(id, name, comment)
+        .then(() => getComments());
+    } else alert.innerHTML = 'Please insert your name and comment';
   });
 };
 
@@ -104,7 +114,9 @@ const popup = async () => {
       <form action="POST">
           <input name= "name" type="text" id="input-name" placeholder="Your name" required>
           <textarea name="comment" id="comment" cols="30" rows="10" required></textarea>
+          <span id = "alert" class="text-start"> </span>
           <button id="submit-comment" class="submit-comment" data="${element.idMeal}"> Submit</button>
+          
       </form>
     </div>
     </div>
@@ -161,7 +173,7 @@ const getmeals = async () => {
         newmeal.innerHTML = ` 
         <div class="meal">
         <div class="meal-header">
-          <img src="${element.strMealThumb}" alt="${element.strMeal}">
+          <img src="${element.strMealThumb}" loading="lazy" width="500" height="280" alt="${element.strMeal}">
         </div>
         <div class="meal-body d-flex justify-between">
           <h4>${element.strMeal}</h4>
@@ -184,6 +196,22 @@ const getmeals = async () => {
     popup();
   };
 
+  const foodCount = document.getElementsByClassName('foodCount');
+
+  const printCount = async (category) => {
+    const mealapiurl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
+    const meals = await fetch(mealapiurl)
+      .then((res) => res.json())
+      .then((data) => data.meals);
+
+    for (let i = 0; i < foodCount.length; i += 1) {
+      foodCount[i].innerHTML = '';
+      if (foodCount[i].classList.contains(category)) {
+        foodCount[i].innerHTML = `(${meals.length})`;
+      }
+    }
+  };
+
   const links = document.querySelectorAll('nav li');
   const resetLinks = () => {
     for (let i = 0; i < links.length; i += 1) {
@@ -195,10 +223,13 @@ const getmeals = async () => {
     links[i].addEventListener('click', () => {
       const category = links[i].textContent.toLowerCase();
       getCategoryUrl(category);
+      printCount(category);
       resetLinks();
+
       links[i].classList.add('active');
     });
   }
   getCategoryUrl('seafood');
+  printCount('seafood');
 };
 getmeals();
