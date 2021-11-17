@@ -62,7 +62,7 @@ const popup = async () => {
       }
     });
   };
-  popupModalDataSet(52895);
+  // popupModalDataSet(52895);
 
   for (let i = 0; i < btn.length; i += 1) {
     btn[i].addEventListener('click', () => {
@@ -108,13 +108,13 @@ const getmeals = async () => {
       .then((res) => res.json())
       .then((data) => data.meals);
     printMeals(meals);
-
     popup();
   };
 
   const links = document.querySelectorAll('nav li');
   const resetLinks = () => {
     for (let i = 0; i < links.length; i += 1) {
+      console.log(links);
       links[i].classList.remove('active');
     }
   };
