@@ -114,7 +114,6 @@ const getmeals = async () => {
   const links = document.querySelectorAll('nav li');
   const resetLinks = () => {
     for (let i = 0; i < links.length; i += 1) {
-      console.log(links);
       links[i].classList.remove('active');
     }
   };

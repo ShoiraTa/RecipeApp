@@ -39,8 +39,11 @@ ul {
   list-style: none;
 }
 
+nav ul li {
+  margin: 0 0.8rem;
+}
+
 li a {
-  padding-right: 2rem;
   font-weight: 500;
   color: black;
   text-decoration: none;
@@ -112,7 +115,6 @@ img {
 .fa-heart.active {
   color: rgb(128, 0, 0);
 }
-
 
 i {
   cursor: pointer;
@@ -194,6 +196,10 @@ footer {
 }
 
 /* Helpers */
+.active {
+  border-bottom: 1px solid #6d8347;
+}
+
 .visible {
   display: block;
 }
