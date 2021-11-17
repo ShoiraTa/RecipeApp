@@ -146,6 +146,3 @@ const getmeals = async () => {
     });
   }
   getCategoryUrl('seafood');
-};
-
-getmeals();
