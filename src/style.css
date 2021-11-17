@@ -69,12 +69,16 @@ img {
   justify-content: space-around;
 }
 
+.meal-body {
+  height: 60px;
+}
+
 .meal-list li {
   list-style: none;
   width: 30%;
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .likes {
