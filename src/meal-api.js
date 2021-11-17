@@ -121,17 +121,18 @@ const popup = async () => {
     </div>
     </div>
       `;
+
         const ingredientsUl = document.querySelector('#ingredientsUl');
         const ingredients = () => {
           const entries = Object.entries(element);
           const ingredientsArray = entries
             .filter(([key, value]) => key.startsWith('strIngredient') && value && value.trim())
-            /* eslint-disable-next-line */
-            .map(([key, value]) => value);
+          /* eslint-disable-next-line */
+              .map(([key, value]) => value);
           const measuresArray = entries
             .filter(([key, value]) => key.startsWith('strMeasure') && value && value.trim())
-            /* eslint-disable-next-line */
-            .map(([key, value]) => value);
+          /* eslint-disable-next-line */
+              .map(([key, value]) => value);
           for (let i = 1; i < ingredientsArray.length; i += 1) {
             ingredientsUl.innerHTML += `<li> ${ingredientsArray[i]} - ${measuresArray[i]} </li> `;
           }
@@ -171,6 +172,7 @@ const getmeals = async () => {
       meals.forEach((element) => {
         const newmeal = document.createElement('li');
         newmeal.innerHTML = ` 
+
         <div class="meal">
         <div class="meal-header">
           <img src="${element.strMealThumb}" loading="lazy" width="500" height="280" alt="${element.strMeal}">
@@ -184,6 +186,7 @@ const getmeals = async () => {
           <button class= "comments" data="${element.idMeal}">Comments</button>
         </div>
       </div>`;
+
         meallist.appendChild(newmeal);
       });
     };
@@ -232,4 +235,6 @@ const getmeals = async () => {
   getCategoryUrl('seafood');
   printCount('seafood');
 };
+
 getmeals();
+
