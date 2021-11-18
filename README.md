@@ -25,7 +25,7 @@ In this project, we built our own web application based on an external API. The 
 
 ## Deployment Link
 
-!(demo.gif)
+![](demo.gif)
 
 ## Getting Started
 
