@@ -22,6 +22,10 @@ body {
   background: url('../1550308952.svg') no-repeat center;
 }
 
+.header-middle {
+  padding-bottom: 3rem;
+}
+
 .header-middle h1 {
   margin: 0;
   font-weight: 200;
@@ -117,10 +121,6 @@ img {
   background-color: #eaeaea;
   color: #6d8347;
   transition: all ease 0.3s;
-}
-
-#modal {
-  padding: 2rem 0;
 }
 
 .fa-heart {
@@ -225,6 +225,7 @@ form {
   padding: 0.5rem 2rem;
 }
 
+.submit-comment,
 #input-name,
 #comment {
   border: 1px solid #6d8347;
@@ -257,6 +258,11 @@ textarea:focus {
   margin-bottom: 0.5rem;
 }
 
+.fa-heart:active {
+  transform: translateY(4px);
+  transition: all ease 0.3s;
+}
+
 /* Helpers */
 .bold {
   font-weight: 500;
@@ -264,6 +270,10 @@ textarea:focus {
 
 .active {
   border-bottom: 1px solid #6d8347;
+}
+
+.heart-active {
+  color: #6d8347;
 }
 
 .visible {
