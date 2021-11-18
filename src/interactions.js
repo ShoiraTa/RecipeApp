@@ -2,9 +2,18 @@ const Displaylikes = async () => {
   const likeditems = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/3ZrrNIt8NnVNPbr64tsy/likes')
     .then((response) => response.json())
     .then((data) => data);
+
   const likesnumber = document.getElementsByClassName('likes-qty');
-  likeditems.forEach((e, i) => {
-    likesnumber[i].innerHTML = e.likes;
+  const likebtnsarray = Array.from(likesnumber);
+
+  likebtnsarray.forEach((element) => {
+    const likeId = element.getAttribute('data');
+    const currentSpan = element;
+    likeditems.forEach((e) => {
+      if (likeId === e.item_id) {
+        currentSpan.innerHTML = e.likes;
+      }
+    });
   });
 };
 
@@ -18,19 +27,23 @@ const likeapi = async (itemid) => {
       'Content-type': 'application/json; charset=UTF-8',
     },
   })
-    .then(() => Displaylikes());
+    .then(() => {
+      Displaylikes();
+    });
 };
 
 const like = () => {
   const likebtns = document.getElementsByClassName('fa-heart');
   const likebtnsarray = Array.from(likebtns);
-  likebtnsarray.forEach((element, i) => {
+  likebtnsarray.forEach((element) => {
+    const likeId = element.getAttribute('data');
     element.addEventListener('click', () => {
-      likeapi(i);
+      element.classList.add('heart-active');
+      likeapi(likeId);
     });
   });
 };
 
-Displaylikes();
+setTimeout(() => like(), 3000);
 
-setTimeout(() => like(), 4000);
+export { like, Displaylikes };
