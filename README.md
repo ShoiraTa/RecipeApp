@@ -23,7 +23,7 @@ In this project, we built our own web application based on an external API. The 
 
 [Live demo](https://shoirata.github.io/RecipeApp/)
 
-## Deployment Link
+## Demo
 
 ![](demo.gif)
 
