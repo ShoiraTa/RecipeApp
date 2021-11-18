@@ -1,24 +1,45 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+# JavaScript Capstone Project
 
-# Awesome books list using Java Script!
+In this project, we built our own web application based on an external API. The web application has 2 user interfaces:
 
-In this project, we built a simple website that allows users to add and remove books from a list using JavaScript objects and arrays. We dynamically modify the DOM and add basic events.
+- On homepage interface you can you can like your favorite meals;
+- On comments interface you can add comments;
 
 ## Built With
 
 - Java Script
 - HTML
 - CSS
+- Mealdb API
 
-## Deployment Link
+### Technologies used
 
-https://timowest12.github.io/Awesome-books/
+- Github
+- GitFlow
+- Visual Studio Code
+- webpack
+- npm
+- jest
 
-## Website Demo
+[Live demo](https://shoirata.github.io/RecipeApp/)
 
-![Website demo](demo.jpg)
+## Demo
 
-## Authors
+![](demo.gif)
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+- go to the directory that you want to clone the repository in.
+- right click and choose Git Bash here.
+- type "git clone https://github.com/ShoiraTa/RecipeApp.git".
+- run `npm install` to install all the dependencies
+- Run `npm start` to bundle the files in the src folder
+
+or
+
+- Go to the dist folder and open index.html
 
 👤 **Shoira Toshpulatova**
 
@@ -27,12 +48,12 @@ https://timowest12.github.io/Awesome-books/
 
 ![Shoira's GitHub stats](https://github-readme-stats.vercel.app/api?username=shoirata&count_private=true&theme=dark&show_icons=true)
 
-👤 **Timo Wester**
+👤 **Daniel Shdeed**
 
-- GitHub: [@githubhandle](https://github.com/Timowest12)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/timo-wester-6a0282a7/)
+- GitHub: [@githubhandle](https://github.com/Danieldotcomcoder))
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/daniel-shdeed-832b03115/)
 
-![Timo's GitHub stats](https://github-readme-stats.vercel.app/api?username=Timowest12&count_private=true&theme=dark&show_icons=true)
+![Daniel's GitHub stats](https://github-readme-stats.vercel.app/api?username=danieldotcomcoder&count_private=true&theme=dark&show_icons=true)
 
 ## Acknowledgments
 
@@ -40,4 +61,8 @@ https://timowest12.github.io/Awesome-books/
 
 ## 📝 License
 
-This project is [MIT](./MIT) licensed.
+This project is [MIT](<.(https://choosealicense.com/licenses/mit/)>) licensed.
+
+## Show your support
+
+Give a ⭐️ if you like this project!
