@@ -21,9 +21,10 @@ In this project, we built our own web application based on an external API. The 
 - npm
 - jest
 
+[Live demo](https://shoirata.github.io/RecipeApp/)
+
 ## Deployment Link
 
-[Live demo](https://shoirata.github.io/RecipeApp/)
 ![](demo.gif)
 
 ## Getting Started
