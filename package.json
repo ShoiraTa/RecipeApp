@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "start": "webpack serve --open",
     "build": "webpack"
   },
@@ -12,7 +13,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.3.1",
     "css-loader": "^6.4.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
