@@ -61,7 +61,7 @@ or
 
 ## 📝 License
 
-This project is [MIT](./MIT) licensed.
+This project is [MIT](<.(https://choosealicense.com/licenses/mit/)>) licensed.
 
 ## Show your support
 
