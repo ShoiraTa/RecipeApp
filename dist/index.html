@@ -6,29 +6,32 @@
     <title>Wbpack Exercise</title>
     <link href="//fonts.googleapis.com/css?family=Average&subset=latin" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Allison&subset=latin" rel="stylesheet" type="text/css">
-<script defer src="main.bundle.js"></script></head>
+<script defer src="/RecipeApp/main.bundle.js"></script></head>
 <body>
-
     <header>
         <div class="header-top bg-green d-flex justify-center">
             <span class="letter-spacing-01">Its all about food and taste ...</span> 
         </div>
         <div class="header-middle">
             <a href="#" class="">
-            <div class="logo">
-            </div>
-        </a>
+                <div class="logo">
+                </div>
+            </a>
             <h1 class="text-center">PINCH OF SALT</h1>
             <p class="text-center">Healthy cooking</p>
             <nav>
-                <ul class="d-flex justify-center">
-                    <li><a href="#" class="letter-spacing-01">HOME</a> </li>
-                    <li><a href="#" class="letter-spacing-01">COMMENTS</a></li>
-                    <li><a href="#" class="letter-spacing-01">CONTACTS</a></li>
+                <ul class="d-flex justify-between">
+                    <li class="active"><a href="#" class="letter-spacing-01">SEAFOOD</a><span class="foodCount seafood"></span></li>
+                    
+                    <li><a href="#" class="letter-spacing-01">VEGETARIAN</a><span class="foodCount vegetarian"></span></li>
+                    
+                    <li><a href="#" class="letter-spacing-01">DESSERT</a><span class="foodCount dessert"></span></li>
                 </ul>
             </nav>
         </div>
     </header>
+    <div id="modal" class="d-flex justify-center">
+    </div>
     <main>
         <div class="meal-list"></div> 
     </main>
